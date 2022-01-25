@@ -1,4 +1,4 @@
-Relics_list = {'1':'角斗士','2': '逆飞', '3': '华馆'}
+Relics_list = {1:'角斗士',2: '逆飞', 3: '华馆'}
 
 def Relics_input():
     print(str('1:角斗士,2: 逆飞, 3: 华馆'))
@@ -10,10 +10,10 @@ def Relics_input():
     global defend_on              #防御
     global defend_off
 
-    user_Relics = str(input('请选择你的圣遗物:'))
-    user_Relics_key = user_Relics[0:2]
+    user_Relics = int(input('请选择你的圣遗物:'))
+    assert 1 <= user_Relics <= 3, '圣遗物输入错误！'
 
-    print('该圣遗物为：' + str(Relics_list[user_Relics_key]))
+    print('该圣遗物为：' + str(Relics_list[user_Relics]))
     if user_Relics == '1':   #角斗士
         All_hurt = 0.35
         defend_on = defend_off = 0
@@ -34,6 +34,6 @@ def Relics_input():
 
 if __name__=='__main__':
     Relics_input()
-    print(str(Relics_list[user_Relics_key] + '的全伤为：' + str(All_hurt)))
-    print(str(Relics_list[user_Relics_key] + '的防御1为：' + str(defend_on)))
-    print(str(Relics_list[user_Relics_key] + '的防御2为：' + str(defend_off)))
+    print(str(Relics_list[user_Relics] + '的全伤为：' + str(All_hurt)))
+    print(str(Relics_list[user_Relics] + '的防御1为：' + str(defend_on)))
+    print(str(Relics_list[user_Relics] + '的防御2为：' + str(defend_off)))
