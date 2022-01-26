@@ -16,12 +16,14 @@ def star():
 '''
 
 
-def the_noelle_expect(user_aggressivity,user_Defensivepower):
-    global user_A_Magnification
-    global user_Q_Magnification
- #   global Q_data  # Q的防御力转化值
+def the_noelle_expect():
+    global user_aggressivity  #用户的攻击力
+    global user_Defensivepower  #用户的防御力
+    global user_A_Magnification  #用户的普攻等级
+    global user_Q_Magnification  #用户的大招等级
+    global Q_data  # Q的防御力转化值
     #  global E_data
-    global A1_data
+    global A1_data  #普攻倍率
     global A2_data
     global A3_data
     global A4_data
@@ -59,7 +61,7 @@ def the_noelle_expect(user_aggressivity,user_Defensivepower):
     global two #第二乘区
     two = Critical.the_Critical_expect_number
     global max_three #第三乘区
-    max_three = ( 1 + Re.All_hurt + 0.466 + 0.15 + wp.weapon_All_hurt_on )
+    max_three = ( 1 + Re.All_hurt_on + 0.466 + 0.15 + wp.weapon_All_hurt_on )
 
     global min_A1_one
     global min_A2_one
@@ -73,7 +75,7 @@ def the_noelle_expect(user_aggressivity,user_Defensivepower):
     min_A3_one = the_aggressivity_of_Q_data_min * A3_data + Defensivepower_min * wp.weapon_Special_effects
     min_A4_one = the_aggressivity_of_Q_data_min * A4_data + Defensivepower_min * wp.weapon_Special_effects
     global min_three  # 第三乘区
-    min_three = ( 1 + Re.All_hurt + 0.466 + 0.15 + wp.weapon_All_hurt_off)
+    min_three = ( 1 + Re.All_hurt_off + 0.466 + 0.15 + wp.weapon_All_hurt_off)
 
     global A1_hurt_max  #第一刀最大伤害
     global A1_hurt_min
@@ -84,6 +86,7 @@ def the_noelle_expect(user_aggressivity,user_Defensivepower):
     global A4_hurt_max
     global A4_hurt_min
     global tiankong_bo
+    global tiankong_bo_expect
     tiankong_bo = the_aggressivity_of_Q_data_max * (1 + Critical.user_Critical_damage) * ( 1 + 0.15 + wp.weapon_All_hurt_on) * wp.weapon_Firm_but_gentle
     tiankong_bo_expect = the_aggressivity_of_Q_data_max * two * (1 + 0.15 + wp.weapon_All_hurt_on) * wp.weapon_Firm_but_gentle
     #每刀的实际伤害
@@ -96,8 +99,9 @@ def the_noelle_expect(user_aggressivity,user_Defensivepower):
     A3_hurt_min = min_A3_one * (1 + Critical.user_Critical_damage) * min_three
     A4_hurt_min = min_A4_one * (1 + Critical.user_Critical_damage) * min_three
 
-    global kang
+    global kang  #急冻树抗性(双岩)
     kang = 1/2.237216*1.1666666
+
 
     print('女仆吃满被动时的开大攻击力为：{:.2f}'.format(the_aggressivity_of_Q_data_max))
     print('女仆第一刀的伤害为：{:.2f}'.format(A1_hurt_max*kang))
@@ -113,3 +117,5 @@ def the_noelle_expect(user_aggressivity,user_Defensivepower):
     print('该女仆的最大输出期望值为：{:.2f}'.format(the_noelle_expect_max*kang))
     the_noelle_expect_min = min_A4_one * two * min_three
     print('该女仆的最小输出期望值为：{:.2f}'.format(the_noelle_expect_min*kang))
+
+

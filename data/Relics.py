@@ -6,7 +6,8 @@ def Relics_input():
     global user_Relics             #用户的圣遗物
     global user_Relics_key
 
-    global All_hurt             #全伤吃满被动
+    global All_hurt_on             #全伤吃满被动
+    global All_hurt_off
     global defend_on              #防御
     global defend_off
 
@@ -14,18 +15,19 @@ def Relics_input():
     assert 1 <= user_Relics <= 3, '圣遗物输入错误！'
 
     print('该圣遗物为：' + str(Relics_list[user_Relics]))
-    if user_Relics == '1':   #角斗士
-        All_hurt = 0.35
+    if user_Relics == 1:   #角斗士
+        All_hurt_on = All_hurt_off = 0.35
         defend_on = defend_off = 0
 
-    elif user_Relics == '2': #逆飞
-        All_hurt = 0.4
+    elif user_Relics == 2: #逆飞
+        All_hurt_on = All_hurt_off = 0.4
         defend_on = defend_off = 0
 
-    elif user_Relics == '3': #华馆
-        All_hurt = 0.24
+    elif user_Relics == 3: #华馆
+        All_hurt_on = 0.24
+        All_hurt_off = 0.06
         defend_on = 0.24
-        defend_off = 0
+        defend_off = 0.06
 
     else:
         All_hurt = 0
@@ -34,6 +36,7 @@ def Relics_input():
 
 if __name__=='__main__':
     Relics_input()
-    print(str(Relics_list[user_Relics] + '的全伤为：' + str(All_hurt)))
+    print(str(Relics_list[user_Relics] + '的全伤1为：' + str(All_hurt_on)))
+    print(str(Relics_list[user_Relics] + '的全伤2为：' + str(All_hurt_off)))
     print(str(Relics_list[user_Relics] + '的防御1为：' + str(defend_on)))
     print(str(Relics_list[user_Relics] + '的防御2为：' + str(defend_off)))
